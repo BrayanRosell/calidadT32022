@@ -1,0 +1,87 @@
+﻿<div class="modal-dialog text-center">
+    <div class="col-sm-8 main-section">
+        <div class="modal-content">
+            <form action="/Veterinaria/Registrar" id="Formulario" class="col-12" method="post" enctype="multipart/form-data">
+
+
+
+
+
+                <div class="form-group" id="user-group">
+                    <input type="text" class="form-control" name="Nombre" placeholder="Nombre " required="" autofocus="" />
+
+                </div>
+
+                <div class="form-group" id="user-group">
+                    <strong>FechaNacimiento</strong>
+                    <input type="date" class="form-control" name="FechaNacimiento" placeholder="FechaNacimiento " required="" autofocus="" id="fechaInspeccion"  onblur="myFunction()"/>
+
+                </div>
+                <div>
+                    <select class="form-control" name="Idsexo">
+                        <option name="">Elija un sexo</option>
+                        @foreach (var item in ViewBag.Sexo)
+                        {
+            <option value="@item.IdSexo"> @item.Nombre</option>
+}
+                    </select>
+                </div>
+                <div>
+                    <select class="form-control" name="Idespecie">
+                        <option name="">Elija una especie</option>
+                        @foreach (var item in ViewBag.Especie)
+                        {
+            <option value="@item.IdEspecie"> @item.Nombre</option>
+}
+                    </select>
+                </div>
+                <div>
+                    <select class="form-control" name="Idraza">
+                        <option name="">Elija una Raza</option>
+                        @foreach (var item in ViewBag.Raza)
+                        {
+            <option value="@item.IdRaza"> @item.Nombre</option>}
+                    </select>
+                </div>
+                <div class="form-group" id="email-group">
+                    <input type="text" class="form-control" name="Tamanio" placeholder="Tamanio" required="" autofocus="" />
+
+                </div>
+                <div class="form-group" id="">
+                    <textarea type="text" class="form-control" name="DatosParticulares" placeholder="DatosParticulares" autofocus="" /></textarea>
+
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>  Registrar </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var myDate = $('#fechaInspeccion');
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10)
+        dd = '0' + dd;
+
+    if (mm < 10)
+        mm = '0' + mm;
+
+    today = yyyy + '-' + mm + '-' + dd;
+    myDate.attr("max", today);
+
+    function myFunction() {
+        var date = myDate.val();
+        if (Date.parse(date)) {
+            if (date > today) {
+                alert('La fecha no puede ser mayor a la actual');
+                myDate.val("");
+            }
+        }
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,0 +1,47 @@
+﻿
+<a class="btn btn-success" href="veterinaria/Registrar/">Registrar</a>
+
+<table class=" table table-striped">
+    <thead>
+        <tr class="table-dark">
+            <th scope="col">#</th>
+            <th scope="col"> FechaRegistro</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">FechaNacimiento</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Especie</th>
+            <th scope="col">Raza</th>
+            <th scope="col">Tamanio</th>
+            <th scope="col">DatosParticulares</th>
+            <th scope="col">Nombres del dueño</th>
+            <th scope="col">Dirección del dueño</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{int cont = 0; }
+        @foreach (var item in ViewBag.Animal)
+        {
+
+            <tr>
+                <th scope="row">@(cont+1)</th>
+                <td>@item.FechaRegistro</td>
+                <td>@item.Nombre</td>
+                <td>@item.FechaNacimiento</td>
+                <td>@item.Sexos.Nombre</td>
+                <td>@item.Especies.Nombre</td>
+                <td>@item.Razas.Nombre</td>
+                <td>@item.Tamanio</td>
+                <td>@item.DatosParticulares</td>
+                <td>@item.Usuarios.Nombre</td>
+                <td>@item.Usuarios.Direccion</td>
+                <td>@item.Usuarios.Telefono</td>
+                <td>@item.Usuarios.Email</td>
+            </tr>
+            cont++;
+
+        }
+    </tbody>
+</table>
